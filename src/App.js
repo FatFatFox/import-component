@@ -1,19 +1,30 @@
 import React from 'react';
+import { NavList as A } from 'sep';
 
-import Filter from './Filter'
-import FilterSchema from './FilterSchema'
+const dataSource = [
+  {
+    title: '全部',
+    value: 0,
+    key: 'total'
+  },
+  {
+    title: '未开始',
+    value: 3,
+    key: 'not_start'
+  }
+]
 
-import './App.css';
-
-const filterProps = {                             //这里定义的是查询页面要绑定的数据源
-  expand : false,
-  filterSchema : FilterSchema,
-  onSearch (q) {},
+const navListProps = {
+  dataSource,
+  defaultKey: 'total',
+  onChange: data => {
+    console.log(`Data: ${data.value}`)
+  }
 }
 
 const App = () => {
   return (
-    <Filter {...filterProps}/>
+    <A {...navListProps} />
   )
 };
 
